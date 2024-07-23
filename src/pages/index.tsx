@@ -68,15 +68,13 @@ const items = [
 export default function Home() {
     return (
         <>
-            <MainSidebar>
-                <BentoGridItem
-                    title={items[0].title}
-                    description={items[0].description}
-                    header={items[0].header}
-                    icon={items[0].icon}
-                    className={'md:col-span-full'}
-                />
-            </MainSidebar>
+            <BentoGridItem
+                title={items[0].title}
+                description={items[0].description}
+                header={items[0].header}
+                icon={items[0].icon}
+                className={'md:col-span-full'}
+            />
         </>
     );
 }

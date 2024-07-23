@@ -12,15 +12,15 @@ export function MainSidebar({ children }: Maintype) {
     return (
         <div
             className={cn(
-                'rounded-md flex flex-col md:flex-row bg-gray-100  w-full flex-1 mx-auto border border-neutral-200  overflow-hidden',
+                'rounded-md z-1 flex flex-col md:flex-row bg-[rgba(255,255,255, 0.001)]  w-full flex-1 mx-auto border border-neutral-200  overflow-hidden',
                 'h-screen w-screen'
             )}
         >
             <Sidebar open={open} setOpen={setOpen}>
-                <SidebarBody className="justify-between gap-10">
+                <SidebarBody className="justify-between gap-10 z-1">
                     <div className="flex flex-col flex-1 overflow-y-auto">
                         {open ? <Logo /> : <LogoIcon />}
-                        <div className="mt-8 flex flex-col gap-2">
+                        <div className="mt-8 flex flex-col gap-2 z-1">
                             {links.map((link, idx) => (
                                 <SidebarLink key={idx} link={link} />
                             ))}
