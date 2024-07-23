@@ -1,4 +1,4 @@
-import { API_KEY, BASE_URL } from '@/data/Corporate/base/data';
+import { API_KEY, BASE_URL } from '@/data/base/data';
 import axios from 'axios';
 
 const useGet = () => {
