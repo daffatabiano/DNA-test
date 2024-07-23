@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { Sidebar, SidebarBody, SidebarLink } from '@/components/ui/sidebar';
 import { links } from './Sidebar.data';
+import { SUB_IMAGE } from '@/data/sub/data';
 
 export function MainSidebar({ children }: Maintype) {
     const [open, setOpen] = useState(false);
@@ -29,11 +30,11 @@ export function MainSidebar({ children }: Maintype) {
                     <div>
                         <SidebarLink
                             link={{
-                                label: 'Manu Arora',
+                                label: 'Guest',
                                 href: '#',
                                 icon: (
                                     <Image
-                                        src="https://assets.aceternity.com/manu.png"
+                                        src={SUB_IMAGE}
                                         className="h-7 w-7 flex-shrink-0 rounded-full"
                                         width={50}
                                         height={50}
@@ -55,11 +56,11 @@ export const Logo = () => {
             href="#"
             className="font-normal flex space-x-2 items-center text-sm text-black py-1 relative z-20"
         >
-            <div className="h-5 w-6 bg-black dark:bg-white rounded-br-lg rounded-tr-sm rounded-tl-lg rounded-bl-sm flex-shrink-0" />
             <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
                 <img
                     src="/immersive/sidebar-open.png"
                     alt="logo-sidebar-open"
+                    className="h-24 w-[100%]"
                 />
             </motion.span>
         </Link>
@@ -71,7 +72,11 @@ export const LogoIcon = () => {
             href="#"
             className="font-normal flex space-x-2 items-center text-sm text-black py-1 relative z-20"
         >
-            <img src="/immersive/sidebar.png" alt="logo-sidebar" />
+            <img
+                src="/immersive/sidebar.png"
+                alt="logo-sidebar"
+                className="h-10 w-10 object-cover rounded-full"
+            />
         </Link>
     );
 };
