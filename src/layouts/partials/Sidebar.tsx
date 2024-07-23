@@ -14,7 +14,7 @@ export function MainSidebar({ children }: Maintype) {
         <div
             className={cn(
                 'rounded-md z-1 flex flex-col md:flex-row bg-[rgba(255,255,255, 0.001)]  w-full flex-1 mx-auto border border-neutral-200  overflow-hidden',
-                'h-screen w-screen'
+                'h-screen w-screen '
             )}
         >
             <Sidebar open={open} setOpen={setOpen}>

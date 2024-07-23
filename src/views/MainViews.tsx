@@ -81,9 +81,9 @@ export default function MainViews() {
     return (
         <>
             <BentoGridItem
-                title={items[0].title}
-                description={items[0].description}
-                header={items[0].header}
+                title={isNews[0]?.title}
+                description={isNews[0]?.description}
+                header={<img src={isNews[0]?.urlToImage} />}
                 icon={items[0].icon}
                 className={'md:row-span-full'}
             />
