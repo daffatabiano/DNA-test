@@ -85,7 +85,7 @@ export const LogoIcon = () => {
 const Dashboard = ({ children }: Maintype) => {
     return (
         <div className="flex flex-1">
-            <div className="p-2 md:p-4 rounded-tl-2xl border border-neutral-200 bg-transparent  flex flex-col gap-2 flex-1 w-full h-full">
+            <div className="p-2 md:p-4 rounded-tl-2xl border border-neutral-200 bg-transparent  flex flex-col gap-2 flex-1 w-full h-full overflow-y-auto">
                 {children}
             </div>
         </div>

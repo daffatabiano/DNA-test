@@ -15,6 +15,7 @@ interface SidebarContextProps {
     open: boolean;
     setOpen: React.Dispatch<React.SetStateAction<boolean>>;
     animate: boolean;
+    className?: string;
 }
 
 const SidebarContext = createContext<SidebarContextProps | undefined>(
