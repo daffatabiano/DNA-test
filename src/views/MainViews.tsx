@@ -19,7 +19,7 @@ const Skeleton = ({ className }: { className: string }) => (
     />
 );
 
-const SkeletonCard = () => {
+export const SkeletonCard = () => {
     return (
         <div className={'grid row-span-1 gap-2 md:grid-cols-8'}>
             <Skeleton className={'md:col-span-4'} />
@@ -34,7 +34,7 @@ const SkeletonCard = () => {
 
 export default function MainViews() {
     const { get } = useGet();
-    const [isNews, setIsNews] = useState([]);
+    const [isNews, setIsNews] = useState<Article[]>([]);
     const dispatch = useDispatch();
     const [isLoading, setIsLoading] = useState(false);
     // const isUrl = useSelector((state) => console.log(state?.read));
@@ -42,11 +42,11 @@ export default function MainViews() {
 
     const getData = async () => {
         setIsLoading(true);
-        const res = await get(
+        const res: any = await get(
             'everything?q=apple&from=2024-07-22&to=2024-07-22&sortBy=popularity'
         );
-        setIsNews(res?.data?.articles);
-        if (res?.status === 200) {
+        setIsNews(res.data.articles);
+        if (res.status === 200) {
             setIsLoading(false);
         } else {
             setIsLoading(false);

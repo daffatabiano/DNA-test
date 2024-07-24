@@ -1,21 +1,41 @@
 import { Modal, ModalTrigger } from '@/components/ui/modals';
+import { SUB_EMPTY_IMAGE } from '@/data/sub/data';
+import ErrorSvg from '@/data/sub/svg';
+import { useAppSelector } from '@/hooks/redux';
 import { BentoGrid, BentoGridItem } from '@/layouts/partials/BentoGrid';
 import { setId } from '@/redux/features/readSlice';
 import { IconBook2 } from '@tabler/icons-react';
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 export default function ReadedViews() {
-    const isRead = useSelector((state) => state?.read);
-    const [isNews, setIsNews] = useState([]);
+    const isRead = useAppSelector((state) => state?.read);
+    const [isNews, setIsNews] = useState<any[]>([]);
     const dispatch = useDispatch();
+    const router = useRouter();
     useEffect(() => {
         setIsNews(isRead?.id);
     }, []);
-    console.log(isNews, 'isNewwewews');
 
     return (
         <>
+            {isNews?.length === 0 ? (
+                <>
+                    <div className="flex justify-center ">
+                        <ErrorSvg />
+                    </div>
+                    <h1 className="text-center text-3xl">
+                        No news which you read yet
+                    </h1>
+                    <button
+                        onClick={() => router.push('/')}
+                        className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded w-48 m-auto"
+                    >
+                        Read News
+                    </button>
+                </>
+            ) : null}
             <BentoGrid className={'md:grid-cols-8'}>
                 {isNews?.map((item, i) => (
                     <BentoGridItem

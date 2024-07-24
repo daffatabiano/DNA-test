@@ -8,17 +8,18 @@ import { setId } from '@/redux/features/readSlice';
 import { IconBook2 } from '@tabler/icons-react';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { SkeletonCard } from './MainViews';
 
 export default function TopNewsViews() {
     const { get } = useGet();
-    const [isNews, setIsNews] = useState([]);
+    const [isNews, setIsNews] = useState<Article[]>([]);
     const dispatch = useDispatch();
     const [isLoading, setIsLoading] = useState(false);
     // const isUrl = useSelector((state) => console.log(state?.read));
 
     const getData = async () => {
         setIsLoading(true);
-        const res = await get('top-headlines?sources=techcrunch');
+        const res: any = await get('top-headlines?sources=techcrunch');
         setIsNews(res?.data?.articles);
         if (res?.status === 200) {
             setIsLoading(false);
@@ -26,7 +27,6 @@ export default function TopNewsViews() {
             setIsLoading(false);
         }
     };
-    console.log(isNews);
 
     useEffect(() => {
         getData();
@@ -34,6 +34,7 @@ export default function TopNewsViews() {
 
     return (
         <>
+            {isLoading && <SkeletonCard />}
             <BentoGrid className={'md:grid-cols-8'}>
                 {isNews?.map((item, i) => (
                     <BentoGridItem

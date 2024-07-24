@@ -4,7 +4,7 @@ import axios from 'axios';
 const useGet = () => {
     const get = async (url: string) => {
         try {
-            const res = await axios.get(`${BASE_URL}/${url}`, {
+            const res = await axios.get<ApiResponse>(`${BASE_URL}/${url}`, {
                 headers: {
                     'x-api-key': API_KEY,
                 },
