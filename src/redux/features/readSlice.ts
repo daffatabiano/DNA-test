@@ -1,11 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 type InitState = {
-    id: string;
+    id: any;
 };
 
 const initialState: InitState = {
-    id: '',
+    id: [],
 };
 
 export const readSlice = createSlice({
@@ -13,10 +13,22 @@ export const readSlice = createSlice({
     initialState,
     reducers: {
         setId: (state, action) => {
-            state.id = action.payload;
+            if (action.payload) {
+                state.id = state.id.filter((id: any) => id !== action.payload);
+                if (state.id) {
+                    state.id.push(action.payload);
+                }
+                console.log(state);
+            }
         },
-        clearId: (state) => {
-            state.id = '';
+        clearId: (state, action) => {
+            if (action.payload) {
+                state.id = state.id.filter((id: any) => id === action.payload);
+                if (state.id) {
+                    state.id = action.payload;
+                }
+                console.log(state);
+            }
         },
     },
 });
