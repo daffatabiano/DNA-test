@@ -14,11 +14,16 @@ export const readSlice = createSlice({
     reducers: {
         setId: (state, action) => {
             if (action.payload) {
-                state.id = state.id.filter((id: any) => id !== action.payload);
-                if (state.id) {
+                const existingUrl = state.id.find(
+                    (url: any) => url.url === action.payload.url
+                );
+                if (!existingUrl) {
                     state.id.push(action.payload);
+                } else {
+                    console.log(
+                        `URL ${action.payload.url} sudah ada di state.id.`
+                    );
                 }
-                console.log(state);
             }
         },
         clearId: (state, action) => {
@@ -27,7 +32,6 @@ export const readSlice = createSlice({
                 if (state.id) {
                     state.id = action.payload;
                 }
-                console.log(state);
             }
         },
     },

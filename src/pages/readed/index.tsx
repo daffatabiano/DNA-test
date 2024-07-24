@@ -1,7 +1,5 @@
+import ReadedViews from '@/views/ReadedViews';
+
 export default function page() {
-    return (
-        <div>
-            <h1>Hello world</h1>
-        </div>
-    );
+    return <ReadedViews />;
 }
