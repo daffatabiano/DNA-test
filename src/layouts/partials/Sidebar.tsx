@@ -13,7 +13,7 @@ export function MainSidebar({ children }: Maintype) {
     return (
         <div
             className={cn(
-                'rounded-md z-1 flex flex-col md:flex-row bg-[rgba(255,255,255, 0.001)]  w-full flex-1 mx-auto border border-neutral-200  overflow-hidden',
+                'rounded-md z-1 flex flex-col md:flex-row bg-[rgba(255,255,255, 0.001)]  w-full flex-1 mx-auto border border-neutral-200  overflow-y-auto',
                 'h-screen w-screen '
             )}
         >

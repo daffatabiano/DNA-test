@@ -1,7 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 type InitState = {
-    id: any;
+    id: any[];
 };
 
 const initialState: InitState = {
@@ -12,10 +12,10 @@ export const readSlice = createSlice({
     name: 'read',
     initialState,
     reducers: {
-        setId: (state, action) => {
+        setId: (state, action: PayloadAction<any>) => {
             if (action.payload) {
                 const existingUrl = state.id.find(
-                    (url: any) => url.url === action.payload.url
+                    (url) => url.url === action.payload.url
                 );
                 if (!existingUrl) {
                     state.id.push(action.payload);
@@ -26,13 +26,8 @@ export const readSlice = createSlice({
                 }
             }
         },
-        clearId: (state, action) => {
-            if (action.payload) {
-                state.id = state.id.filter((id: any) => id === action.payload);
-                if (state.id) {
-                    state.id = action.payload;
-                }
-            }
+        clearId: (state, action: PayloadAction<any>) => {
+            state.id = state.id.filter((id) => id !== action.payload);
         },
     },
 });

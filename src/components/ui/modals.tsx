@@ -46,12 +46,12 @@ export const ModalTrigger = ({
 }: {
     children: ReactNode;
     className?: string;
-    onClick?: () => void;
+    onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }) => {
     return (
         <button
             className={cn(
-                'px-4 py-2 rounded-md text-black dark:text-white text-center relative overflow-hidden',
+                'px-4 py-2 z-0 rounded-md text-black dark:text-white text-center relative overflow-hidden',
                 className
             )}
             onClick={onClick}

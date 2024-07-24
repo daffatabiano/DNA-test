@@ -1,16 +1,25 @@
+// store.ts
 import { configureStore } from '@reduxjs/toolkit';
-import readSlice from './features/readSlice';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage'; // default to localStorage for web
+import { createWrapper } from 'next-redux-wrapper';
+import rootReducer from './reducers'; // Pastikan Anda memiliki rootReducer
 
-export const makeStore = () => {
-    return configureStore({
-        reducer: {
-            read: readSlice,
-        },
-    });
+const persistConfig = {
+    key: 'root',
+    storage,
 };
 
-// Infer the type of makeStore
-export type AppStore = ReturnType<typeof makeStore>;
-// Infer the `RootState` and `AppDispatch` types from the store itself
-export type RootState = ReturnType<AppStore['getState']>;
-export type AppDispatch = AppStore['dispatch'];
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+const makeStore = () =>
+    configureStore({
+        reducer: persistedReducer,
+        middleware: (getDefaultMiddleware) =>
+            getDefaultMiddleware({
+                serializableCheck: false,
+            }),
+    });
+
+export const wrapper = createWrapper(makeStore);
+export const persistor = persistStore(makeStore());
