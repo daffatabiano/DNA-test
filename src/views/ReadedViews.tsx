@@ -23,7 +23,10 @@ export default function ReadedViews() {
                         title={item?.title}
                         description={item?.description}
                         header={
-                            <img className="w-full" src={item?.urlToImage} />
+                            <img
+                                className="w-full h-full object-cover"
+                                src={item?.urlToImage}
+                            />
                         }
                         className={`${
                             i == 0 || i % 5 == 0 ? 'col-span-4' : 'col-span-2'
