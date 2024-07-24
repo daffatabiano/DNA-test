@@ -16,6 +16,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/redux/store.js", "src/redux/features/readSlice.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/redux/store.ts", "src/redux/features/readSlice.js"],
   "exclude": ["node_modules"]
 }
