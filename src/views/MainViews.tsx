@@ -9,6 +9,7 @@ import { useDispatch } from 'react-redux';
 import { setId } from '@/redux/features/readSlice';
 import { useRouter } from 'next/router';
 import { cn, formatDate } from '@/lib/utils';
+import { SUB_EMPTY_IMAGE } from '@/data/sub/data';
 
 const Skeleton = ({ className }: { className: string }) => (
     <div
@@ -43,7 +44,7 @@ export default function MainViews() {
     const getData = async () => {
         setIsLoading(true);
         const res: any = await get(
-            'everything?q=apple&from=2024-07-22&to=2024-07-22&sortBy=popularity'
+            'everything?q=messi&from=2024-07-22&to=2024-07-24&sortBy=popularity'
         );
         setIsNews(res.data.articles);
         if (res.status === 200) {
@@ -70,7 +71,7 @@ export default function MainViews() {
                         header={
                             <img
                                 className="w-full h-full object-cover"
-                                src={item?.urlToImage}
+                                src={item?.urlToImage || SUB_EMPTY_IMAGE}
                             />
                         }
                         className={`${

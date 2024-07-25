@@ -7,9 +7,13 @@ import { cn } from '@/lib/utils';
 import { Sidebar, SidebarBody, SidebarLink } from '@/components/ui/sidebar';
 import { links } from './Sidebar.data';
 import { SUB_IMAGE } from '@/data/sub/data';
+import { useDispatch } from 'react-redux';
+import { toggle } from '@/redux/features/searchbarSlice';
 
 export function MainSidebar({ children }: Maintype) {
     const [open, setOpen] = useState(false);
+    const dispatch = useDispatch();
+
     return (
         <div
             className={cn(
@@ -23,7 +27,11 @@ export function MainSidebar({ children }: Maintype) {
                         {open ? <Logo /> : <LogoIcon />}
                         <div className="mt-8 flex flex-col gap-2 z-1">
                             {links.map((link, idx) => (
-                                <SidebarLink key={idx} link={link} />
+                                <SidebarLink
+                                    key={idx}
+                                    link={link}
+                                    onClick={() => dispatch(toggle())}
+                                />
                             ))}
                         </div>
                     </div>
