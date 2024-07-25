@@ -44,7 +44,7 @@ export default function MainViews() {
     const getData = async () => {
         setIsLoading(true);
         const res: any = await get(
-            'everything?q=messi&from=2024-07-22&to=2024-07-24&sortBy=popularity'
+            'everything?q=sport&from=2024-07-22&to=2024-07-24&sortBy=popularity'
         );
         setIsNews(res.data.articles);
         if (res.status === 200) {
