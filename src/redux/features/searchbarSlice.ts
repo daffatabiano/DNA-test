@@ -13,8 +13,11 @@ export const searchbarSlice = createSlice({
         setValue: (state, action) => {
             state.value = action.payload;
         },
+        clearValue : (state) => {
+            state.value = '';
+        }
     },
 });
 
-export const { toggle, setValue } = searchbarSlice.actions;
+export const { toggle, setValue, clearValue } = searchbarSlice.actions;
 export default searchbarSlice.reducer;
