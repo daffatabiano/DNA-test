@@ -9,6 +9,7 @@ import { links } from './Sidebar.data';
 import { SUB_IMAGE } from '@/data/sub/data';
 import { useDispatch } from 'react-redux';
 import { toggle } from '@/redux/features/searchbarSlice';
+import { IconCopyright } from '@tabler/icons-react';
 
 export function MainSidebar({ children }: Maintype) {
     const [open, setOpen] = useState(false);
@@ -39,7 +40,7 @@ export function MainSidebar({ children }: Maintype) {
                         <SidebarLink
                             link={{
                                 label: 'Guest',
-                                href: '#',
+                                href: '/',
                                 icon: (
                                     <Image
                                         src={SUB_IMAGE}
@@ -49,6 +50,18 @@ export function MainSidebar({ children }: Maintype) {
                                         alt="Avatar"
                                     />
                                 ),
+                            }}
+                        />
+                        <SidebarLink
+                            link={{
+                                label: (
+                                    <span>
+                                        Copyright 2024 created By Daffa Tabiano.
+                                        <br /> All rights reserved.
+                                    </span>
+                                ),
+                                href: '/',
+                                icon: <IconCopyright />,
                             }}
                         />
                     </div>
@@ -61,7 +74,7 @@ export function MainSidebar({ children }: Maintype) {
 export const Logo = () => {
     return (
         <Link
-            href="#"
+            href="/"
             className="font-normal flex space-x-2 items-center text-sm text-black py-1 relative z-20"
         >
             <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
@@ -77,7 +90,7 @@ export const Logo = () => {
 export const LogoIcon = () => {
     return (
         <Link
-            href="#"
+            href="/"
             className="font-normal flex space-x-2 items-center text-sm text-black py-1 relative z-20"
         >
             <img
